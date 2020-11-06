@@ -1,5 +1,4 @@
 $(function() {
-
     //顶部导航
     $('.Nfr9').hover(function() {
         $(this).children('.Nf0').show().end();
@@ -62,6 +61,30 @@ $(function() {
             }
         })
     });
+    //扩展菜单
+    $('#banner1 .B1').hover(function(e) {
+        $(this).addClass('hover1').find('.line').stop().fadeIn()
+            .siblings('.b11').show()
+    }, function() {
+        $(this).removeClass('hover1').find('.line').stop().fadeOut().siblings('.b11').hide();
+    });
+    $('.del').click(function() {
+        console.log($(this).parent().siblings('.line').parent());
+        $(this).parent().stop().hide()
+            .siblings('.line').stop().fadeOut().parent()
+            .removeClass('hover1');
+    })
+
+    //swiper轮播图
+    //滑动上去停掉动画，移出动态启动
+    $(".swiper-wrapper .swiper-slide").hover(function() {
+        swiper.autoplay.stop();
+    }, function() {
+        swiper.autoplay.start();
+    })
+    $(".swiper-pagination-bullet").mouseover(function() {
+        $(this).click(); //鼠标划上去之后，自动触发点击事件来模仿鼠标划上去的事件
+    })
 
 
 })

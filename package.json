@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-connect": "^5.7.0"
+    "gulp-connect": "^5.7.0",
+    "sass": "^1.29.0"
+  },
+  "devDependencies": {
+    "gulp-sass": "^4.1.0"
   }
 }

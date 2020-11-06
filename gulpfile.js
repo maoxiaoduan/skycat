@@ -1,5 +1,13 @@
 const gulp = require('gulp');
 const connect = require('gulp-connect');
+const sass = require('gulp-sass');
+
+gulp.task('sass', done => {
+    gulp.src('index/sass/*.scss').pipe(sass())
+        .pipe(gulp.dest('dist/index/css'))
+        .pipe(connect.reload())
+    done();
+})
 
 //拷贝html文件
 gulp.task('html', done => {
@@ -35,6 +43,7 @@ gulp.task('common', done => {
 
 //监听文件变化
 gulp.task('watch', done => {
+    gulp.watch('index/sass/*.scss', gulp.series('sass'));
     gulp.watch('index/html/*.html', gulp.series('html'));
     gulp.watch('index/css/*.css', gulp.series('css'));
     gulp.watch('index/js/*.js', gulp.series('js'));
@@ -43,7 +52,7 @@ gulp.task('watch', done => {
     done();
 })
 
-gulp.task('bulid', gulp.parallel('html', 'css', 'js', 'img', 'common'))
+gulp.task('bulid', gulp.parallel('html', 'css', 'js', 'img', 'common', 'sass'))
 
 
 //创建服务器
