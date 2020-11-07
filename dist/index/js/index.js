@@ -83,8 +83,62 @@ $(function() {
         swiper.autoplay.start();
     })
     $(".swiper-pagination-bullet").mouseover(function() {
+
         $(this).click(); //鼠标划上去之后，自动触发点击事件来模仿鼠标划上去的事件
     })
 
+    //全球精选
+    $(function() {
+        let str = `https://tns.simba.taobao.com/?name=tcmad&st_type=5_8&o=m&count=10&pid=430406_1007&_ksTS=1604710243215_225&p4p=jsonp226`
+        $.ajax({
+            type: 'get',
+            url: str,
+            dataType: 'jsonp',
+            jsonpCallback: 'jsonp226',
+            success: function(data) {
+                // console.log(data.data[0].adList);
+                //刷新页面随机获取五个数据
+                let data1 = data.data[0].adList.splice(Math.floor(Math.random()) * 10, 5);
+                console.log(data1);
+                let str1 = '';
+                $.each(data1, function(i) {
+                    // console.log(data1[i].TBGOODSLINK.replace('_sum.jpg', ''));
+                    let zhe = Math.floor((data1[i].PROMOTEPRICE / (data1[i].GOODSPRICE + '.0').replace('00.0', '') * 10)).toFixed(0)
+                    let zhe1 = (((data1[i].PROMOTEPRICE / (data1[i].GOODSPRICE + '.0').replace('00.0', '')).toFixed(2) * 10).toFixed(1) + "").split('.')[1]
+                    str1 += `<div class="con0-3">
+                    <div class="img">
+                        <span>
+                            <h2>${zhe}</h2>.${zhe1}<br>
+                            折
+                        </span>
+                        <a href="#">
+                            <img src="${data1[i].TBGOODSLINK.replace('_sum.jpg', '')}" alt="">
+                        </a>
+                    </div>
+                    <div class="con">
+                        <p>海外品牌，瞎吹的</p>
+                        <h2>${data1[i].SHORTTITLE}</h2>
+                        <p>${data1[i].TITLE}</p>
+                    </div>
+                    <div class="price">
+                        <div class="pri1">
+                            <div>
+                                <span>￥<b>${Math.ceil(data1[i].PROMOTEPRICE)}</b></span>
+                                <span>￥${(data1[i].GOODSPRICE + '.0').replace('00.0', '')}</span>
+                            </div>
+                            <p>
+                                已售件${data1[i].SELL}件
+                            </p>
+                        </div>
+                        <a href="#">
+                        马上抢
+                        </a>
+                    </div>
+                </div>`
+                })
+                $('.con0-2').html(str1);
+            }
+        })
+    })
 
 })

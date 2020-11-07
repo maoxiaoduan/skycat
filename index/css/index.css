@@ -695,7 +695,6 @@ body {
 #content .con-wrap {
     width: 1190px;
     margin: 0 auto;
-    text-align: center;
 }
 
 
@@ -710,6 +709,7 @@ body {
 }
 
 #con0 .con0-1 a {
+    text-align: center;
     display: block;
     margin: 48px auto 0;
     width: 142px;
@@ -720,3 +720,124 @@ body {
     font-weight: 800;
     border: 1px solid #7A45E5;
 }
+
+
+/* 第一全球选购内容 */
+
+#con0 .con0-2 .con0-3 {
+    background: #fff;
+    width: 238px;
+    border-left: 1px solid #ececec;
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+
+#con0 .con0-3 .img {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#con0 .con0-3 .img span {
+    display: block;
+    color: #fff;
+    width: 64px;
+    font-size: 16px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 2px;
+    text-align: center;
+    background: url(../img/jt.png) no-repeat;
+}
+
+#con0 .con0-3 .img span h2 {
+    display: inline-block;
+    font-size: 20px;
+}
+
+#con0 .con0-3 .img img {
+    width: 237px;
+    height: 237px;
+}
+
+#con0 .con0-3 .con {
+    margin: 14px 0 0;
+    padding: 0 10px;
+}
+
+#con0 .con0-3 .con p:first-of-type {
+    color: #999999;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+}
+
+#con0 .con0-3 .con h2 {
+    margin-top: 10px;
+    color: #333;
+    font-size: 16px;
+    line-height: 18px;
+    height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+#con0 .con0-3 .con p:last-of-type {
+    margin-top: 10px;
+    color: #666;
+    height: 34px;
+    font-size: 12px;
+    overflow: hidden;
+    line-height: 18px;
+}
+
+#con0 .con0-3 .price {
+    margin-top: 14px;
+    padding: 0 10px;
+}
+
+#con0 .con0-3 .price .pri1 {
+    width: 130px;
+    float: left;
+}
+
+#con0 .con0-3 .pri1 span:first-of-type {
+    color: #dd2727;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#con0 .con0-3 .pri1 span:first-of-type b {
+    font-size: 24px;
+}
+
+#con0 .con0-3 .pri1 span:last-of-type {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 12px;
+}
+
+#con0 .con0-3 .pri1 p {
+    color: #999;
+    font-size: 12px;
+}
+
+#con0 .con0-3 .price a {
+    height: 40px;
+    display: inline-block;
+    width: 84px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    background: #ffdadd;
+    color: #f45;
+    float: right;
+}
+
+
+/* 分类 */
