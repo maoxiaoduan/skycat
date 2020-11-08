@@ -69,7 +69,7 @@ $(function() {
         $(this).removeClass('hover1').find('.line').stop().fadeOut().siblings('.b11').hide();
     });
     $('.del').click(function() {
-        console.log($(this).parent().siblings('.line').parent());
+        // console.log($(this).parent().siblings('.line').parent());
         $(this).parent().stop().hide()
             .siblings('.line').stop().fadeOut().parent()
             .removeClass('hover1');
@@ -99,7 +99,7 @@ $(function() {
                 // console.log(data.data[0].adList);
                 //刷新页面随机获取五个数据
                 let data1 = data.data[0].adList.splice(Math.floor(Math.random()) * 10, 5);
-                console.log(data1);
+                // console.log(data1);
                 let str1 = '';
                 $.each(data1, function(i) {
                     // console.log(data1[i].TBGOODSLINK.replace('_sum.jpg', ''));
@@ -136,9 +136,45 @@ $(function() {
                     </div>
                 </div>`
                 })
-                $('.con0-2').html(str1);
+                $('#con0 .con0-2').html(str1);
             }
         })
     })
 
+
+    //楼梯导航
+
+    $(window).resize(function() {
+        $(this).width() < 1190 ? $('#stairs').fadeIn() : $('#stairs').fadeOut()
+    });
+    $(window).scroll(function() {
+        $(this).scrollTop() > 200 ? $('#stairs').fadeIn() : $('#stairs').fadeOut()
+    });
+
+    $('#stairs1 li').hover(function() {
+        $(this).find('span').stop().animate({
+            "left": '-40px'
+        }, 200).siblings().stop().animate({
+            "left": '0px'
+        }, 200)
+    }, function() {
+        $(this).find('span').stop().animate({
+            "left": '0px'
+        }, 200).siblings().stop().animate({
+            "left": '40px'
+        }, 200)
+    })
+    $('#stairs2 li').hover(function() {
+        $(this).find('span').stop().animate({
+            "left": '-40px'
+        }, 200).siblings().stop().animate({
+            "left": '0px'
+        }, 200)
+    }, function() {
+        $(this).find('span').stop().animate({
+            "left": '0px'
+        }, 200).siblings().stop().animate({
+            "left": '40px'
+        }, 200)
+    })
 })

@@ -841,3 +841,160 @@ body {
 
 
 /* 分类 */
+
+.con11 .con1-con {
+    height: 475px;
+    overflow: hidden;
+}
+
+.con11 .img {
+    display: block;
+    width: 1190px;
+    margin: 0 auto 0;
+    height: 40px;
+}
+
+.con11 .img img {
+    margin: 40px auto 0;
+}
+
+.con11 .con1-wrap {
+    width: 1190px;
+    margin: 0 auto;
+    border-top: 1px solid #ed1957;
+}
+
+.con11 .con1-wrap>div {
+    float: left;
+}
+
+.con11 .con1-wrap .con1-1 {
+    padding: 15px 0 0 20px;
+    width: 98px;
+}
+
+.con11 .con1-1 h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 100%;
+    color: #333;
+}
+
+.con11 .con1-1 li {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 100%;
+}
+
+.con11 .con1-2 {
+    position: relative;
+}
+
+.con11 .con1-2 img {
+    width: 192px;
+    height: 474px;
+}
+
+.con11 .con1-2 .con1-txt {
+    width: 100%;
+    height: 98px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    background: rgba(237, 25, 87, 0.95);
+}
+
+.con11 .con1-2 .con1-txt h2 {
+    margin-top: 26px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.con11 .con1-2 .con1-txt p {
+    display: inline-block;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    font-size: 12px;
+    line-height: 20px;
+    width: 104px;
+}
+
+
+/* 楼梯导航 */
+
+#stairs {
+    z-index: 999999999;
+    position: fixed;
+    bottom: 100px;
+    width: 40px;
+    display: none;
+    right: 0px;
+    min-height: 80px;
+}
+
+#stairs #stairs1 {
+    margin-bottom: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#stairs #stairs1 li,
+#stairs #stairs2 li {
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+#stairs #stairs1 li .iconfont,
+#stairs #stairs2 li .iconfont {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #999999;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+#stairs #stairs1 li p,
+#stairs #stairs2 li p {
+    width: 38px;
+    height: 33px;
+    padding-top: 5px;
+    border: 1px solid #5c2694;
+    position: absolute;
+    left: 40px;
+    top: 0;
+    color: #5c2694;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+#stairs #stairs2 li {
+    border: none;
+    margin-top: 2px;
+    background: #BABABA;
+}
+
+#stairs #stairs2 li .iconfont {
+    background: #BABABA;
+    color: #ffffff;
+}
+
+#stairs #stairs2 li p {
+    box-sizing: border-box;
+    padding: 6px 0 0;
+    height: 40px;
+    border: none;
+    background: #464646;
+    color: #fff;
+}
