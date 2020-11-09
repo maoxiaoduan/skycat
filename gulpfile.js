@@ -1,11 +1,15 @@
 const gulp = require('gulp');
-const connect = require('gulp-connect');
 const sass = require('gulp-sass');
+const connect = require('gulp-connect');
+const sourcemaps = require("gulp-sourcemaps");
 
 gulp.task('sass', done => {
-    gulp.src('index/sass/*.scss').pipe(sass())
+    gulp.src('index/sass/*.scss')
+        .pipe(sourcemaps.init()).pipe(sass({
+            outputStyle: "compressed"
+        })).pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/index/css'))
-        .pipe(connect.reload())
+        .pipe(connect.reload());
     done();
 })
 
@@ -52,7 +56,7 @@ gulp.task('watch', done => {
     done();
 })
 
-gulp.task('bulid', gulp.parallel('html', 'css', 'js', 'img', 'common', 'sass'))
+gulp.task('bulid', gulp.parallel('sass', 'html', 'css', 'js', 'img', 'common'))
 
 
 //创建服务器

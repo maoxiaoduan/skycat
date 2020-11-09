@@ -61,6 +61,7 @@ $(function() {
             }
         })
     });
+
     //扩展菜单
     $('#banner1 .B1').hover(function(e) {
         $(this).addClass('hover1').find('.line').stop().fadeIn()
@@ -77,13 +78,12 @@ $(function() {
 
     //swiper轮播图
     //滑动上去停掉动画，移出动态启动
-    $(".swiper-wrapper .swiper-slide").hover(function() {
-        swiper.autoplay.stop();
+    $("#banner2 .swiper-wrapper .swiper-slide").hover(function() {
+        swiper1.autoplay.stop();
     }, function() {
-        swiper.autoplay.start();
+        swiper1.autoplay.start();
     })
     $(".swiper-pagination-bullet").mouseover(function() {
-
         $(this).click(); //鼠标划上去之后，自动触发点击事件来模仿鼠标划上去的事件
     })
 
@@ -102,6 +102,9 @@ $(function() {
                 // console.log(data1);
                 let str1 = '';
                 $.each(data1, function(i) {
+                    if (data1[i].PROMOTEPRICE == '') {
+                        data1[i].PROMOTEPRICE = (data1[i].GOODSPRICE + '.0').replace('00.0', '');
+                    }
                     // console.log(data1[i].TBGOODSLINK.replace('_sum.jpg', ''));
                     let zhe = Math.floor((data1[i].PROMOTEPRICE / (data1[i].GOODSPRICE + '.0').replace('00.0', '') * 10)).toFixed(0)
                     let zhe1 = (((data1[i].PROMOTEPRICE / (data1[i].GOODSPRICE + '.0').replace('00.0', '')).toFixed(2) * 10).toFixed(1) + "").split('.')[1]
@@ -141,12 +144,55 @@ $(function() {
         })
     })
 
+    //信息中的数据
+    //获取随机数据 
+    function Data(data, dom) {
+        let str = "";
+        let num = Math.round(Math.random() * (data.length - 5));
+        let arr = data.splice(num, 5);
+        $.each(arr, function(i) {
+            str += `
+        <div>
+            <a href="#" data-id="${arr[i].id}">
+            <img src="${arr[i].imgUrl}" alt="">
+                <div class="title">${arr[i].title}</div>
+            <div class="price">
+            <p><span>￥</span>${arr[i].price}</p>
+            <span>￥${Math.floor(arr[i].price * 0.9)}</span>
+                </div>
+                </a>
+            </div>
+        `
+        })
+        dom.html(str);
+    }
+    $.ajax({
+        url: `http://localhost:3000/products`,
+        type: 'get',
+        success: function(data) {
+            let arr1 = $('.con1-con .con1-3');
+            Data(data, arr1.eq(0));
+            Data(data, arr1.eq(1));
+            Data(data, arr1.eq(2));
+            Data(data, arr1.eq(3));
+            Data(data, arr1.eq(4));
+            Data(data, arr1.eq(5));
+            Data(data, arr1.eq(6));
+        }
+    })
+
+
+    $('.con11 .con1-3>div').hover(function() {
+        $(this).find('img').stop().animate({
+            'left': '-5px'
+        }, 200)
+    }, function() {
+        $(this).find('img').stop().animate({
+            'left': '0px'
+        }, 200)
+    })
 
     //楼梯导航
-
-    $(window).resize(function() {
-        $(this).width() < 1190 ? $('#stairs').fadeIn() : $('#stairs').fadeOut()
-    });
     $(window).scroll(function() {
         $(this).scrollTop() > 200 ? $('#stairs').fadeIn() : $('#stairs').fadeOut()
     });
@@ -165,16 +211,19 @@ $(function() {
         }, 200)
     })
     $('#stairs2 li').hover(function() {
-        $(this).find('span').stop().animate({
-            "left": '-40px'
-        }, 200).siblings().stop().animate({
-            "left": '0px'
-        }, 200)
-    }, function() {
-        $(this).find('span').stop().animate({
-            "left": '0px'
-        }, 200).siblings().stop().animate({
-            "left": '40px'
-        }, 200)
-    })
+            $(this).find('span').stop().animate({
+                "left": '-40px'
+            }, 200).siblings().stop().animate({
+                "left": '0px'
+            }, 200)
+        }, function() {
+            $(this).find('span').stop().animate({
+                "left": '0px'
+            }, 200).siblings().stop().animate({
+                "left": '40px'
+            }, 200)
+        })
+        //引入底部
+    $('#Footer-wrap').load('../html/footer.html')
+
 })
