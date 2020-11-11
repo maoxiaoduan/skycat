@@ -1128,6 +1128,11 @@ body {
     text-decoration: underline;
 }
 
+#Footer-wrap {
+    background: #fff;
+    overflow: hidden;
+}
+
 
 /* 楼梯导航 */
 

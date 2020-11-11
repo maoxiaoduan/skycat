@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情页</title>
+    <link rel="stylesheet" href="../../common/reset.css">
+    <script src="../../common/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../fonticon/iconfont.css">
+    <link rel="stylesheet" href="../css/productDetail.css">
+    <!-- axios请求 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- jq的cookie -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="../js/productDetail.js"></script>
+</head>
+
+<body>
+    <div id="Box">
+        <div id="Bigbox">
+            <img src="../img/b2.webp" id="Bigimg">
+        </div>
+        <div id="Midbox">
+            <div id="shaw"></div>
+            <img src="../img/b2.webp">
+        </div>
+        <div id="Smabox">
+            <ul id="oul">
+                <li class="active"><img src="../img/b2.webp"></li>
+                <li><img src="img/m02.jpg"></li>
+                <li><img src="img/m03.jpg"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var Box = document.getElementById('Box')
+    var BigBox = document.getElementById('Bigbox');
+    var Bigimg = document.getElementById('Bigimg');
+    var MidBox = document.getElementById('Midbox');
+    var shaw = document.getElementById('shaw');
+    var SmaBox = document.getElementById('Smabox');
+    var ali = document.getElementById('oul').children;
+    console.log(Bigimg.src)
+    MidBox.onmouseover = function() {
+        shaw.style.display = 'block';
+        BigBox.style.display = 'block';
+    }
+    MidBox.onmousemove = function(e) {
+        let evt = e || event;
+        let x = evt.pageX; //事件发生点距离页面的位置减去父元素距离根元素的距离
+        let y = evt.pageY;
+        let l = x - shaw.offsetWidth / 2;
+        let t = y - shaw.offsetHeight / 2
+            //进行判断给出临界值
+        let Sl = Box.offsetLeft;
+        let St = Box.offsetTop;
+        let Bl = MidBox.offsetWidth - shaw.offsetWidth;
+        let Bt = MidBox.offsetHeight - shaw.offsetHeight;
+        t = t <= St ? St : t >= Bt ? Bt : t;
+        l = l <= Sl ? Sl : l >= Bl ? Bl : l;
+        shaw.style.top = t + 'px';
+        shaw.style.left = l + 'px';
+        Bigimg.style.top = -t * Bigimg.offsetHeight / MidBox.offsetHeight + 'px';
+        Bigimg.style.left = -l * Bigimg.offsetWidth / MidBox.offsetWidth + 'px';
+    }
+    MidBox.onmouseout = function() {
+        shaw.style.display = 'none';
+        BigBox.style.display = 'none';
+    }
+    for (let i = 0; i < ali.length; i++) {
+        ali[i].onmouseover = function() {
+            for (let j = 0; j < ali.length; j++) {
+                ali[j].className = "";
+            }
+            ali[i].className = "active";
+            var Src = ali[i].children[0].src
+            MidBox.children[1].src = Src;
+            Bigimg.src = Src;
+        }
+    }
+</script>
+
+</html>

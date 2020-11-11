@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/page.css">
+    <script src="../../common/jquery.min.js"></script>
+    <script src="../js/page.js"></script>
+</head>
+
+<body>
+    <div class="data clean"></div>
+    <!--翻页-->
+    <div class="zxf_pagediv"></div>
+</body>
+<script type="text/javascript">
+    // function Page(obj) {
+    $.ajax({
+        url: `http://localhost:3000/products`,
+        type: 'get',
+        success: function(data) {
+            var data = data;
+            let str = '';
+            let pageNum = Math.ceil(data.length / 10);
+            let arr = data.slice(0, 10);
+            $.each(arr, function(i) {
+                str += `<div class="item" data-id="${arr[i].id}">
+                        <div class="item-wrap"> 
+                            <a class="item-img">
+                                <img src="${arr[i].imgUrl}">
+                                </a>
+                            <div class="item-price">￥<span>${arr[i].price}0</span><p>海外</p></div>
+                            <div class="item-title">
+                                <a class="item-title">${arr[i].title}</a>
+                                <a class="item-shop">${arr[i].title}</a>
+                            </div>
+                            <div class="item-num">
+                            <span class="item-deal">月成交<i>${Math.floor(Math.random() * 9999)}笔</i></span>
+                            <span class="item-evaluate">评价<i>${Math.floor(Math.random() * 9999)}</i></span>
+                            <span class="item-kefu"><a><img src="../img/kf.png" alt=""></a></span>
+                            </div>
+                        </div>
+                        </div>`
+            })
+            $('.data').html(str);
+            $('.item').click(function() {
+                    console.log('123');
+                    let url = `productDetail.html?id=${$(this).attr('data-id')}`
+                    $(window).attr('location', url);
+                })
+                //翻页
+            $('.zxf_pagediv').createPage({
+                pageNum,
+                current: 1,
+                backfun: function(e) {
+                    let str1 = '';
+                    let arr1 = data.slice((e.current - 1) * 10, e.current * 10);
+                    $.each(arr1, function(i) {
+                        str1 += `<div class="item" data-id="${arr1[i].id}">
+                        <div class="item-wrap"> 
+                            <a  class="item-img">
+                                <img src="${arr1[i].imgUrl}">
+                                </a>
+                            <div class="item-price">￥<span>${arr1[i].price}0</span><p>海外</p></div>
+                            <div class="item-title">
+                                <a  class="item-title">${arr1[i].title}</a>
+                                <a  class="item-shop">${arr1[i].title}</a>
+                            </div>
+                            <div class="item-num">
+                            <span class="item-deal">月成交<i>${Math.floor(Math.random() * 9999)}笔</i></span>
+                            <span class="item-evaluate">评价<i>${Math.floor(Math.random() * 9999)}</i></span>
+                            <span class="item-kefu"><a ><img src="../img/kf.png" alt=""></a></span>
+                            </div>
+                        </div>
+                        </div>`
+                    })
+                    $('.data').html(str1)
+                    $('.item').click(function() {
+                        console.log('123');
+                        let url = `productDetail.html?id=${$(this).attr('data-id')}`
+                        $(window).attr('location', url);
+                    })
+                }
+            });
+        }
+    })
+</script>
+
+</html>

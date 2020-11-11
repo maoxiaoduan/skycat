@@ -62,4 +62,17 @@ $(function() {
         })
     });
 
+
+
+    // 拿cookie并更改
+    window.onload = function() {
+        let user = JSON.parse($.cookie('user'));
+        console.log(user);
+        if (user) {
+            let str = `
+                Hi,<a href="#"> ${user.name}</a>
+            `
+            $('#Nf-l p').eq(1).html(str).next('p').html('').html(`<a href="#" class="delcookie">退出</a>`);
+        }
+    }
 })
