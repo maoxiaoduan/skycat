@@ -1,0 +1,58 @@
+section #con-box {
+    width: 1190px;
+    margin: 0 auto;
+    #content {
+        border: 1px solid #cecece;
+        min-height: 30px;
+        li {
+            display: flex;
+            height: 50px;
+            padding: 5px;
+            margin: 5px;
+            border-bottom: 1px solid #0000;
+            img {
+                width: 40px;
+                height: 40px;
+                vertical-align: middle;
+                margin: 5px;
+            }
+            .con {
+                vertical-align: middle;
+                display: flex;
+                line-height: 30px;
+                p {
+                    height: 100%;
+                    line-height: 50px;
+                    margin: 0 10px;
+                }
+                .num {
+                    line-height: 50px;
+                    margin: 0 10px;
+                    .jian,
+                    .jia {
+                        background-color: rosybrown;
+                        display: inline-block;
+                        height: 30px;
+                        width: 40px;
+                        margin: 10px;
+                        cursor: pointer;
+                    }
+                    input {
+                        border: 1px solid #cecece;
+                        height: 40px;
+                        text-indent: 1em;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .del {
+                background-color: rosybrown;
+                display: block;
+                height: 30px;
+                width: 40px;
+                margin: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

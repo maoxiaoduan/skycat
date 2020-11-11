@@ -1,59 +1,137 @@
-img {
-    width: 100%;
-    height: 100%;
+#box-wrap {
+    background: #ffffff;
+    #Box {
+        position: relative;
+        width: 1190px;
+        padding: 20px 0;
+        margin: 0 auto;
+        overflow: hidden;
+        #Bigbox {
+            position: absolute;
+            top: 0;
+            left: 400px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            display: none;
+            z-index: 9999;
+            background-color: #ffffff;
+            #Bigimg {
+                width: 800px;
+                height: 800px;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+        }
+        #Midbox {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            #shaw {
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                display: none;
+                top: 0px;
+                left: 0px;
+                background: rgba(209, 231, 6, 0.5);
+            }
+        }
+        #Smabox {
+            ul {
+                display: flex;
+                width: 400px;
+                li {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 5px;
+                    border: 1px solid #cecece;
+                    cursor: pointer;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                li.active {
+                    border-color: red;
+                }
+            }
+        }
+        #title {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 30px;
+            right: 25%;
+            .price {
+                height: 30px;
+                line-height: 30px;
+                color: firebrick;
+                font-size: 20px;
+                margin: 30px auto;
+            }
+            .num {
+                height: 50px;
+                margin: 30px auto;
+                span {
+                    display: inline-block;
+                    cursor: pointer;
+                    border: 1px solid #cecece;
+                    box-sizing: border-box;
+                    width: 50px;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 48px;
+                    font-size: 25px;
+                    font-weight: 800;
+                    vertical-align: middle;
+                }
+                input {
+                    vertical-align: middle;
+                    width: 100px;
+                    margin: 0 30px;
+                    border: 1px solid #cecece;
+                    box-sizing: border-box;
+                    height: 50px;
+                    font-size: 25px;
+                }
+            }
+            .btn {
+                display: block;
+                width: 200px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                color: gainsboro;
+                font-weight: 800;
+                font-size: 20px;
+                background-color: rgb(255, 115, 50);
+                margin: 20px auto;
+                cursor: pointer;
+            }
+            .btn1 {
+                display: block;
+                width: 200px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                color: gainsboro;
+                font-weight: 800;
+                font-size: 20px;
+                background-color: rgb(255, 115, 50);
+                margin: 20px auto;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
-#Box {
-    position: relative;
-}
-
-#Bigbox {
-    position: absolute;
-    top: 0;
-    left: 400px;
-    width: 400px;
-    height: 400px;
+footer {
     overflow: hidden;
-    display: none;
-}
-
-#Bigbox img {
-    width: 800px;
-    height: 800px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-
-#Midbox {
-    position: relative;
-    width: 400px;
-    height: 400px;
-}
-
-#shaw {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    display: none;
-    top: 0px;
-    left: 0px;
-    background: rgba(209, 231, 6, 0.5);
-}
-
-ul {
-    display: flex;
-    width: 400px;
-}
-
-ul li {
-    width: 100px;
-    height: 100px;
-    margin: 0 5px;
-    border: 1px solid #cecece;
-    cursor: pointer
-}
-
-ul li.active {
-    border-color: red;
+    background: #ffffff;
 }

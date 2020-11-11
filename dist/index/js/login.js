@@ -3,7 +3,9 @@ $(function() {
     axios.get(`http://localhost:3000/userId`).then(res => {
         console.log(res.data);
         $('.con-login').click(function() {
-            $.each(res.data, function(i) {
+            // $.each(res.data, function(i) {
+            for (let i in res.data) {
+                console.log(typeof($('.name').val()), $('.password').val());
                 if ($('.name').val() == res.data[i].id) {
                     if ($('.password').val() == res.data[i].password) {
                         alert('登陆成功');
@@ -11,14 +13,12 @@ $(function() {
                         $(window).attr('location', '../html/index1.html')
                         return false;
                     } else {
-                        alert('密码错误，请重试')
-                        return false;
+                        alert('密码错误，请重试');
+                        // return false;
                     }
-                } else {
-                    alert('账户错误，请重试');
-                    return false;
                 }
-            })
+            }
+            // })
         })
     })
 })

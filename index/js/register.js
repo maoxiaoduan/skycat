@@ -19,11 +19,23 @@ $(function() {
                     }
                 })
             }
-            axios.post(`http://localhost:3000/userId`, {
-                name: $('.name').val(),
-                id: $('.id').val(),
-                password: $('.password').val()
+
+            let sedArr = [
+                axios.post(`http://localhost:3000/catData`, {
+                    id: $('.id').val(),
+                    data: []
+                }),
+                axios.post(`http://localhost:3000/userId`, {
+                    name: $('.name').val(),
+                    id: $('.id').val(),
+                    password: $('.password').val()
+                })
+            ];
+
+            axios.all(sedArr).then(result => {
+                console.log(result);
             })
+
             alert("注册成功");
             $(window).attr('location', '../html/login.html')
 
