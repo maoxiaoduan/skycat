@@ -24,9 +24,11 @@
             <div id="Bigbox">
                 <img src="" id="Bigimg">
             </div>
-            <div id="Midbox">
-                <div id="shaw"></div>
-                <img src="">
+            <div id="Midbox-wrap">
+                <div id="Midbox">
+                    <div id="shaw"></div>
+                    <img src="">
+                </div>
             </div>
             <div id="Smabox">
                 <ul id="oul">
@@ -47,50 +49,49 @@
                 <a href="cart.html" class="btn1">跳转购物车</a>
             </div>
         </div>
-
     </div>
-
     <!-- 尾部 -->
     <footer></footer>
 </body>
 <script>
-    var Box = document.getElementById('Box')
-    var BigBox = document.getElementById('Bigbox');
-    var Bigimg = document.getElementById('Bigimg');
+    $("#Midbox").mouseover(function() {
+        $("#shaw").show()
+        $("#Bigbox").show()
+    })
+    $("#Midbox").mouseout(function() {
+        $("#shaw").hide()
+        $("#Bigbox").hide()
+    })
+
+    $("#Midbox").mousemove(function(e) {
+        var l = e.pageX - $("#Midbox-wrap").offset().left - ($("#shaw").width() / 2)
+        var t = e.pageY - $("#Midbox-wrap").offset().left - ($("#shaw").height() / 2)
+        if (l < 0) {
+            l = 0
+        }
+        if (l > $(this).width() - $("#shaw").width()) {
+            l = $(this).width() - $("#shaw").width()
+        }
+        if (t < 0) {
+            t = 0
+        }
+        if (t > $(this).height() - $("#shaw").height()) {
+            t = $(this).height() - $("#shaw").height()
+        }
+
+        $("#shaw").css({
+            "left": l,
+            "top": t
+        })
+        var pX = l / ($("#Midbox").width() - $("#shaw").width())
+        var pY = t / ($("#Midbox").height() - $("#shaw").height())
+        $("#Bigbox img").css({
+            "left": -pX * ($("#Bigbox img").width() - $("#Bigbox").width()),
+            "top": -pY * ($("#Bigbox img").height() - $("#Bigbox").height())
+        })
+    })
     var MidBox = document.getElementById('Midbox');
-    var shaw = document.getElementById('shaw');
-    var SmaBox = document.getElementById('Smabox');
     var ali = document.getElementById('oul').children;
-    MidBox.onmouseover = function() {
-        shaw.style.display = 'block';
-        BigBox.style.display = 'block';
-    }
-    MidBox.onmousemove = function(e) {
-
-        let evt = e || event;
-        let x = evt.clientX - Box.offsetLeft; //事件发生点距离页面的位置减去父元素距离根元素的距离
-        let y = evt.clientY - Box.offsetTop;
-        let l = x;
-        let t = y;
-        // console.log(MidBox.scrollTop, evt.clientY, evt.clientX, t);
-
-        //进行判断给出临界值
-        // let Sl = Box.offsetLeft;
-        // let St = Box.offsetTop;
-        // let Bl = MidBox.clientX - shaw.offsetWidth;
-        // let Bt = MidBox.clientY - shaw.offsetHeight;
-        // console.log(Bl, Bt);
-        // t = t <= St ? St : t >= Bt ? Bt : t;
-        // l = l <= Sl ? Sl : l >= Bl ? Bl : l;
-        shaw.style.top = y + 'px';
-        shaw.style.left = x + 'px';
-        Bigimg.style.top = -t * Bigimg.offsetHeight / MidBox.offsetHeight + 'px';
-        Bigimg.style.left = -l * Bigimg.offsetWidth / MidBox.offsetWidth + 'px';
-    }
-    MidBox.onmouseout = function() {
-        shaw.style.display = 'none';
-        BigBox.style.display = 'none';
-    }
     for (let i = 0; i < ali.length; i++) {
         ali[i].onmouseover = function() {
             for (let j = 0; j < ali.length; j++) {

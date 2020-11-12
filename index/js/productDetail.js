@@ -42,6 +42,14 @@ $(function() {
         $('#Smabox img').attr('src', res.data.imgUrl);
         $('#title h2').html(res.data.title);
         $('#title .price').html('￥' + res.data.price);
+        $('#title .btn').after('<p class="success1">添加成功</p>')
+        $('#title .success1')
+            .css({
+                'position': 'absolute',
+                'right': "30px",
+                "bottom": '160px',
+                "display": 'none'
+            });
 
         $('#title .btn').click(function() {
             console.log(JSON.parse($.cookie('user')));
@@ -74,29 +82,13 @@ $(function() {
                         axios.put(`http://localhost:3000/catData/${user}`, {
                             data: arr
                         })
-                    }
-                    // console.log(flag);
-                    if (flag) {
-                        let arr = res.data[i].data;
-                        let Num = Number($('#title input').val())
-                        $.each(arr, function(j) {
-                            if (arr[j].id == id) {
-                                let count = Number(arr[j].num)
-                                count += Num;
-                                arr[j].num = count;
-                                return flag = false;
-                            }
-                        })
-                        if (flag) {
-                            arr1 = { id: id, num: $('#title input').val() }
-                            arr.push(arr1);
-                        }
-                        // console.log(arr);
-                        axios.put(`http://localhost:3000/catData/${user}`, {
-                            data: arr
-                        })
-                    }
 
+                        $('#title .success1').fadeIn().animate({
+                            'bottom': '180px'
+                        }).fadeOut().css({
+                            'bottom': '160px'
+                        });
+                    }
                 })
             })
         })
