@@ -52,7 +52,7 @@ $(function() {
             });
 
         $('#title .btn').click(function() {
-            console.log(JSON.parse($.cookie('user')));
+            // console.log(JSON.parse($.cookie('user')));
             if (JSON.parse($.cookie('user')) == null) {
                 alert('请先登录');
                 $(window).attr('location', '../html/login.html')
