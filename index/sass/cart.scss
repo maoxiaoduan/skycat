@@ -9,7 +9,12 @@ section #con-box {
             height: 50px;
             padding: 5px;
             margin: 5px;
-            border-bottom: 1px solid #0000;
+            border-bottom: 1px solid #000;
+            input {
+                position: relative;
+                top: 15px;
+                left: -2px;
+            }
             img {
                 width: 40px;
                 height: 40px;
@@ -17,11 +22,17 @@ section #con-box {
                 margin: 5px;
             }
             .con {
-                vertical-align: middle;
                 display: flex;
                 line-height: 30px;
+                .name {
+                    width: 220px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
                 p {
                     height: 100%;
+                    width: 150px;
                     line-height: 50px;
                     margin: 0 10px;
                 }
@@ -40,19 +51,32 @@ section #con-box {
                     input {
                         border: 1px solid #cecece;
                         height: 40px;
+                        width: 60px;
                         text-indent: 1em;
                         font-size: 18px;
+                        position: relative;
+                        top: 2px;
                     }
                 }
             }
             .del {
-                background-color: rosybrown;
+                background-color: rgb(226, 69, 69);
                 display: block;
                 height: 30px;
+                color: #ffffff;
                 width: 40px;
                 margin: 10px;
                 cursor: pointer;
             }
         }
+    }
+    #clean,
+    #pay {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        background: #b0b0b0;
+        color: #ffffff;
+        margin-right: 50px;
     }
 }
